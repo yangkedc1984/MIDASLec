@@ -1,8 +1,7 @@
 \name{data.freq}
 \alias{data.freq}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+data.freq
 }
 \description{
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
