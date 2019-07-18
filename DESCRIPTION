@@ -1,0 +1,11 @@
+Package: MIDASLec
+Type: Package
+Title: Package for running examples of some models. 
+Version: 0.01
+Date: 2019-07-18
+Author: Who wrote it
+Maintainer: Who to complain to: <jonas.striaukas@gmail.com>
+Description: Package for running examples of some models. 
+Depends: midasr, mfGARCH
+License: GPL
+LazyLoad: yes
