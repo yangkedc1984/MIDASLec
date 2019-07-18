@@ -19,10 +19,7 @@ The DESCRIPTION file:
 
 Maintainer: \packageMaintainer{MIDASLec}
 }
-\references{
+\references{}
 \keyword{ package }
-\seealso{
-}
-\examples{
-TBA
-}
+\seealso{}
+\examples{ TBA }
