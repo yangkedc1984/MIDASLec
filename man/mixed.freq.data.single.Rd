@@ -25,4 +25,4 @@ mixed.freq.data.single(data.refdate, data.x, data.xdate, x.lag, horizon, est.sta
 \references{}
 \author{J.S.}
 \note{Description to be updated.}
-\examples{
+\examples{}

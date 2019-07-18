@@ -27,4 +27,4 @@ mixed.freq.data(data.y, data.ydate, data.x, data.xdate, x.lag, y.lag, horizon, e
 \references{}
 \author{J.S.}
 \note{Description to be updated.}
-\examples{
+\examples{}

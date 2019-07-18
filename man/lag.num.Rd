@@ -20,4 +20,4 @@ lag.num(x.lag, period, unit)
 \references{}
 \author{J.S.}
 \note{Description to be updated.}
-\examples{
+\examples{}

@@ -21,4 +21,4 @@ diff.time.mf(time1, time2, origin, units = c("auto", "secs", "mins", "hours", "d
 \references{}
 \author{J.S.}
 \note{Description to be updated.}
-\examples{
+\examples{}

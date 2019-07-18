@@ -17,4 +17,4 @@ data.vec(DateVec)
 \references{}
 \author{J.S.}
 \note{Description to be updated.}
-\examples{
+\examples{}

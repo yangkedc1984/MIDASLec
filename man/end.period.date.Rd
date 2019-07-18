@@ -18,4 +18,4 @@ end.period.date(date, interval)
 \references{}
 \author{J.S.}
 \note{Description to be updated.}
-\examples{
+\examples{}
