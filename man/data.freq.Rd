@@ -10,9 +10,7 @@ Determine data frequency.
 data.freq(DateVec)
 }
 \arguments{
-  \item{DateVec}{
-DateVec - vector of dates.
-}
+  \item{DateVec}{vector of dates.}
 }
 \details{}
 \value{}
