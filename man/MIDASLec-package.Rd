@@ -17,7 +17,7 @@ The DESCRIPTION file:
 \author{
 \packageAuthor{MIDASLec}
 
-Maintainer: \packageMaintainer{J.S.}
+Maintainer: \packageMaintainer{MIDASLec}
 }
 \references{
 \keyword{ package }
