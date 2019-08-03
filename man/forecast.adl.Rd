@@ -1,0 +1,20 @@
+\name{forecast.adl}
+\alias{forecast.adl}
+\title{
+forecast.adl
+}
+\description{
+TBA
+}
+\usage{
+forecast.adl(data)
+}
+\arguments{
+  \item{data}{}
+}
+\details{}
+\value{}
+\references{}
+\author{J.S.}
+\note{Description to be updated.}
+\examples{}

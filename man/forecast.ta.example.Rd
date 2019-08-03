@@ -1,0 +1,20 @@
+\name{forecast.ta.example}
+\alias{forecast.ta.example}
+\title{
+forecast.ta.example
+}
+\description{
+TBA
+}
+\usage{
+forecast.ta.example(data)
+}
+\arguments{
+  \item{data}{}
+}
+\details{}
+\value{}
+\references{}
+\author{J.S.}
+\note{Description to be updated.}
+\examples{}

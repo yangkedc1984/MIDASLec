@@ -1,0 +1,20 @@
+\name{get.start.adl.midas}
+\alias{get.start.adl.midas}
+\title{
+get.start.adl.midas
+}
+\description{
+TBA
+}
+\usage{
+get.start.adl.midas(data)
+}
+\arguments{
+  \item{data}{}
+}
+\details{}
+\value{}
+\references{}
+\author{J.S.}
+\note{Description to be updated.}
+\examples{}
