@@ -104,8 +104,8 @@ function(data.y,data.ydate,data.x,data.xdate,x.lag,y.lag,horizon,est.start,est.e
   if(loc.end+1<=loc.forecast.end){
     out.lag.y <- out.lag.ydate <- matrix(NaN,nrow=n.forecast,ncol=y.lag) 
     for (m in 1:y.lag){
-      out.lag.y[,m] <- data.y[seq(loc.end-m,loc.forecast.end-m,1)]
-      out.lag.ydate[,m] <- data.ydate.num[seq(loc.end-m,loc.forecast.end-m,1)]
+      out.lag.y[,m] <- data.y[seq(loc.end-m+1,loc.forecast.end-m,1)]
+      out.lag.ydate[,m] <- data.ydate.num[seq(loc.end-m+1,loc.forecast.end-m,1)]
     }
   } else {
     out.lag.y <- out.lag.ydate <- NULL
