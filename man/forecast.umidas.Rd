@@ -1,0 +1,20 @@
+\name{forecast.umidas}
+\alias{forecast.umidas}
+\title{
+forecast.umidas
+}
+\description{
+TBA
+}
+\usage{
+forecast.umidas(data)
+}
+\arguments{
+  \item{data}{}
+}
+\details{}
+\value{}
+\references{}
+\author{J.S.}
+\note{Description to be updated.}
+\examples{}

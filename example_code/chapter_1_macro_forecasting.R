@@ -60,7 +60,7 @@ sqrt(mean(est.ta$residuals^2))
 
 # --- compare OOS --- #
 midas.oos <- forecast.adl(est.midas,weight=weight,par.num.weight=3,data.payems.in,is.intercept=TRUE)
-ta.oos <- forecast.ta.example(est.step,data.payems.in)
+ta.oos <- forecast.ta.example(est.ta,data.payems.in)
 
 midas.oos$rmse
 ta.oos$rmse
@@ -85,10 +85,20 @@ startx.all <- get.start.adl.midas(y=data.cfani.in$est.y,X=data.cfani.in$est.x,z=
 
 
 est.midas <- midas_r_plain(y=data.cfani.in$est.y,X=data.cfani.in$est.x,z=cbind(data.cfani.in$est.lag.y,rep(1,times=length(data.cfani.in$est.y))),weight=weight,startx=startx.all[-c(4,5)],startz=startx.all[c(4,5)],control=list(maxit=500))
+
 # --- Estimate ADL regression model using U-MIDAS scheme --- # 
 est.umidas <- lm(data.cfani.in$est.y~data.cfani.in$est.lag.y+data.cfani.in$est.x)
 
 
+# --- compare IS --- #
+sqrt(mean(est.midas$residuals^2))
+sqrt(mean(est.umidas$residuals^2))
 
+# --- compare OOS --- #
+midas.oos <- forecast.adl(est.midas,weight=weight,par.num.weight=3,data.cfani.in,is.intercept=TRUE)
+umidas.oos <- forecast.umidas(est.ta,data.payems.in)
+
+midas.oos$rmse
+ta.oos$rmse
 
 
