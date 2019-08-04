@@ -77,16 +77,38 @@ plot(c(rep(as.numeric(est.ta$coefficients[3]),times=3),rep(as.numeric(est.ta$coe
 
 # --- compare fixed, rolling, expanding windows for predictions --- #
 # --- fixed --- #
-midas.adl(data.y=data.payems.in$est.y,data.ydate=data.payems.in$est.ydate,
-          data.x=data.payems.in$est.x,data.xdate=data.payems.in$est.xdate, 
-          est.start=as.Date(est.start),est.end=as.Date(est.end),
-          horizon=3,x.lag=9,y.lag=1,polynomial="nealmon",method="fixed",disp.flag=TRUE,
-          num.evals=10000,num.coef=1)
+midas.obj.fixed <- midas.adl(data.y=data.payems.in$est.y,data.ydate=data.payems.in$est.ydate,
+                             data.x=data.payems.in$est.x,data.xdate=data.payems.in$est.xdate, 
+                             est.start=as.Date(est.start),est.end=as.Date(est.end),
+                             horizon=3,x.lag=9,y.lag=1,polynomial="nealmon",method="fixed",disp.flag=TRUE,
+                             num.evals=10000,num.coef=1)
+ta.obj.fixed <- midas.adl(data.y=data.payems.in$est.y,data.ydate=data.payems.in$est.ydate,
+                          data.x=data.payems.in$est.x,data.xdate=data.payems.in$est.xdate, 
+                          est.start=as.Date(est.start),est.end=as.Date(est.end),
+                          horizon=3,x.lag=9,y.lag=1,polynomial="timeaverage",method="fixed",disp.flag=TRUE,
+                          num.evals=10000,num.coef=1)
 # --- rolling --- #
-
+midas.obj.rolling <- midas.adl(data.y=data.payems.in$est.y,data.ydate=data.payems.in$est.ydate,
+                             data.x=data.payems.in$est.x,data.xdate=data.payems.in$est.xdate, 
+                             est.start=as.Date(est.start),est.end=as.Date(est.end),
+                             horizon=3,x.lag=9,y.lag=1,polynomial="nealmon",method="rolling",disp.flag=TRUE,
+                             num.evals=10000,num.coef=1)
+ta.obj.rolling <- midas.adl(data.y=data.payems.in$est.y,data.ydate=data.payems.in$est.ydate,
+                          data.x=data.payems.in$est.x,data.xdate=data.payems.in$est.xdate, 
+                          est.start=as.Date(est.start),est.end=as.Date(est.end),
+                          horizon=3,x.lag=9,y.lag=1,polynomial="timeaverage",method="rolling",disp.flag=TRUE,
+                          num.evals=10000,num.coef=1)
 # --- exapanding --- #
-
-
+midas.obj.expand <- midas.adl(data.y=data.payems.in$est.y,data.ydate=data.payems.in$est.ydate,
+                               data.x=data.payems.in$est.x,data.xdate=data.payems.in$est.xdate, 
+                               est.start=as.Date(est.start),est.end=as.Date(est.end),
+                               horizon=3,x.lag=9,y.lag=1,polynomial="nealmon",method="expand",disp.flag=TRUE,
+                               num.evals=10000,num.coef=1)
+ta.obj.expand <- midas.adl(data.y=data.payems.in$est.y,data.ydate=data.payems.in$est.ydate,
+                            data.x=data.payems.in$est.x,data.xdate=data.payems.in$est.xdate, 
+                            est.start=as.Date(est.start),est.end=as.Date(est.end),
+                            horizon=3,x.lag=9,y.lag=1,polynomial="timeaverage",method="rolling",disp.flag=TRUE,
+                            num.evals=10000,num.coef=1)
 
 # --- Second example is with CFNAI data: --- #
 # --- intial and last date for in-sample estimation --- #
