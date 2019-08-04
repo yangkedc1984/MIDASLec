@@ -8,9 +8,9 @@ function(data.y,data.ydate,data.x,data.xdate,x.lag,y.lag,horizon,est.start,est.e
   data.x <- data.x[mask.na]
   data.xdate <- data.xdate[mask.na]
   data.y <- as.vector(data.y)
-  data.ydate <- as.Date(data.ydate,origin=lubridate::origin)
+  data.ydate <- as.Date(data.ydate)
   data.x <- as.vector(data.x)
-  data.xdate <- as.Date(data.xdate,origin=lubridate::origin)
+  data.xdate <- as.Date(data.xdate)
   
   
   data.ydate.vec <- as.Date(data.ydate)
