@@ -31,8 +31,6 @@ est.end <- "2009-01-01"
 
 # mixed.freq.data(data.y, data.ydate, data.x, data.xdate, x.lag, y.lag, horizon, est.start, est.end, disp.flag = TRUE)
 data.payems.in <- mixed.freq.data(rgdp[,2], rgdp[,1], payems[,2], payems[,1], x.lag=9, y.lag=1, horizon=3, est.start=as.Date(est.start), est.end=as.Date(est.end), disp.flag = TRUE)
-# --- Second example is with CFNAI data: --- #
-data.cfani.in <- mixed.freq.data(rgdp[,2], rgdp[,1], cfnai[,2], cfnai[,1], x.lag=12, y.lag=1, horizon=3, est.start=as.Date(est.start), est.end=as.Date(est.end), disp.flag = TRUE)
 
 
 # --- Estimate ADL-MIDAS regression model using employment data --- #
@@ -76,6 +74,13 @@ plot(c(rep(as.numeric(est.ta$coefficients[3]),times=3),rep(as.numeric(est.ta$coe
       xlab='Lag',ylab='Coefficient',
       main='Time-averaged data coefficients')
 
+
+# --- Second example is with CFNAI data: --- #
+# --- intial and last date for in-sample estimation --- #
+est.start <- "1987-01-01"
+est.end <- "2011-12-01"
+data.cfani.in <- mixed.freq.data(rgdp[,2], rgdp[,1], cfnai[,2], cfnai[,1], x.lag=12, y.lag=1, horizon=3, est.start=as.Date(est.start), est.end=as.Date(est.end), disp.flag = TRUE)
+
 # --- Estimate ADL-MIDAS regression model using CFNAI data --- #
 weight <- nbeta
 # --- get initial values --- #
@@ -96,9 +101,17 @@ sqrt(mean(est.umidas$residuals^2))
 
 # --- compare OOS --- #
 midas.oos <- forecast.adl(est.midas,weight=weight,par.num.weight=3,data.cfani.in,is.intercept=TRUE)
-umidas.oos <- forecast.umidas(est.ta,data.payems.in)
+umidas.oos <- forecast.umidas(est.umidas,data.cfani.in)
 
 midas.oos$rmse
-ta.oos$rmse
+umidas.oos$rmse
 
+# --- plot lag polynomials --- #
+par(mfrow=c(1,2)) 
+plot(nbeta(est.midas$coefficients[c(1,2,3)],d=12),type='l',
+     xlab='Lag',ylab='Coefficient',
+     main='Normalized Beta lag polynomial')
 
+plot(coef(est.umidas),type='l',
+     xlab='Lag',ylab='Coefficient',
+     main='U-MIDAS lag polynomial')

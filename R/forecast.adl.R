@@ -15,7 +15,7 @@ forecast.adl <- function(obj,weight,par.num.weight,data,is.intercept=TRUE){
   if (!is.null(data$out.lag.y)){
     yhl <- beta[(length(beta)-dim(data$out.lag.y)[2]+1):length(beta)]*data$out.lag.y
   } else {
-    yhl <- NULL
+    yhl <- 0
   }
   xhl <- out.x%*%W
   pred <- rep(c,times=length(out.y)) + xhl + yhl

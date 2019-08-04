@@ -1,10 +1,10 @@
 \name{diff.time.mf}
 \alias{diff.time.mf}
 \title{
-Get the difference of frequencies.
+TBA
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+TBA
 }
 \usage{
 diff.time.mf(time1, time2, origin, units = c("auto", "secs", "mins", "hours", "days", "weeks"))
