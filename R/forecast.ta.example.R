@@ -5,7 +5,12 @@ forecast.ta.example <- function(obj,data){
   if (is.vector(out.x)){
     out.x <- t(as.matrix(out.x))
   }
-  x <- cbind(rep(1,times=length(data$out.y)), data$out.lag.y, rowMeans(data$out.x[,1:3]),rowMeans(data$out.x[,4:6]),rowMeans(data$out.x[,7:9]))
+  if (dim(out.x)[1]==1){
+    x <- cbind(rep(1,times=length(data$out.y)), data$out.lag.y, mean(data$out.x[,1:3]),mean(data$out.x[,4:6]),mean(data$out.x[,7:9]))
+  } else {
+    x <- cbind(rep(1,times=length(data$out.y)), data$out.lag.y, rowMeans(data$out.x[,1:3]),rowMeans(data$out.x[,4:6]),rowMeans(data$out.x[,7:9]))
+  }
+  
   beta <- coefficients(obj)
 
   pred <- x%*%beta
