@@ -1,3 +1,4 @@
 import(midasr)
 import(mfGARCH)
+import(lubridate)
 exportPattern("^[[:alpha:]]+")
