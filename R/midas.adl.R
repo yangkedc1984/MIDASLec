@@ -4,6 +4,10 @@ midas.adl <- function(data.y, data.ydate, data.x, data.xdate, est.start,est.end,
   #                 o "nealmon": Exp Almon polynomial
   #                 o "umidas":   Polynomial with step functions (Umidas)
   #                 o "timeaverage": time-averaged high-frequency data 
+  #    methods for forecasting, method: 
+  #                 o "fixed": fixed scheme 
+  #                 o "rolling": rolling window
+  #                 o "expand": expanding window
   # all other input parameters are as in MATALB.
   data.y=rgdp[,2]
   data.ydate=rgdp[,1]
@@ -82,7 +86,7 @@ midas.adl <- function(data.y, data.ydate, data.x, data.xdate, est.start,est.end,
     pred.obj$pred <- pred
     pred.obj$rmse <- sqrt(mean((out.y-pred)^2))
   }
-  return(est.obj=est.obj,pred.obj=pred.obj)
+  return(list(est.obj=est.obj,pred.obj=pred.obj))
 }
 
 midas.estimate <- function(est.y,est.x,est.lag.y,est.xdate,polynomial,num.evals=10000,num.coef=5,startx.all=NULL){

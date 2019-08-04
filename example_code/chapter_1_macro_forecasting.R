@@ -75,6 +75,19 @@ plot(c(rep(as.numeric(est.ta$coefficients[3]),times=3),rep(as.numeric(est.ta$coe
       main='Time-averaged data coefficients')
 
 
+# --- compare fixed, rolling, expanding windows for predictions --- #
+# --- fixed --- #
+midas.adl(data.y=data.payems.in$est.y,data.ydate=data.payems.in$est.ydate,
+          data.x=data.payems.in$est.x,data.xdate=data.payems.in$est.xdate, 
+          est.start=as.Date(est.start),est.end=as.Date(est.end),
+          horizon=3,x.lag=9,y.lag=1,polynomial="nealmon",method="fixed",disp.flag=TRUE,
+          num.evals=10000,num.coef=1)
+# --- rolling --- #
+
+# --- exapanding --- #
+
+
+
 # --- Second example is with CFNAI data: --- #
 # --- intial and last date for in-sample estimation --- #
 est.start <- "1987-01-01"
@@ -115,3 +128,5 @@ plot(nbeta(est.midas$coefficients[c(1,2,3)],d=12),type='l',
 plot(coef(est.umidas),type='l',
      xlab='Lag',ylab='Coefficient',
      main='U-MIDAS lag polynomial')
+
+
