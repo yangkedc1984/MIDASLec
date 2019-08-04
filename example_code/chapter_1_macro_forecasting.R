@@ -77,8 +77,8 @@ plot(c(rep(as.numeric(est.ta$coefficients[3]),times=3),rep(as.numeric(est.ta$coe
 
 # --- compare fixed, rolling, expanding windows for predictions --- #
 # --- fixed --- #
-midas.obj.fixed <- midas.adl(data.y=data.payems.in$est.y,data.ydate=data.payems.in$est.ydate,
-                             data.x=data.payems.in$est.x,data.xdate=data.payems.in$est.xdate, 
+midas.obj.fixed <- midas.adl(data.y=rgdp[,2],ydate=rgdp[,1],
+                             data.x=payems[,2],data.xdate=payems[,1], 
                              est.start=as.Date(est.start),est.end=as.Date(est.end),
                              horizon=3,x.lag=9,y.lag=1,polynomial="nealmon",method="fixed",disp.flag=TRUE,
                              num.evals=10000,num.coef=1)

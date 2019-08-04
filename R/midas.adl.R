@@ -9,6 +9,8 @@ midas.adl <- function(data.y, data.ydate, data.x, data.xdate, est.start,est.end,
   #                 o "rolling": rolling window
   #                 o "expand": expanding window
   # all other input parameters are as in MATALB.
+  
+  mf.data <- mixed.freq.data(data.y,data.ydate,data.x,data.xdate,x.lag,y.lag,horizon,est.start,est.end,disp.flag)
   est.y <- mf.data$est.y
   est.x <- mf.data$est.x
   est.lag.y <- mf.data$est.lag.y
