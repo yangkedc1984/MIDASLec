@@ -28,8 +28,11 @@ un.quant <- matrix(NA,nrow=length(y),ncol=1)
 for (j in win.size:length(y)){
   un.quant[j] <- quantile(y[(j-win.size+1):j], probs = 0.05)
 }
-lines(est.midas.0.05$date,un.quant,type='l',col="red")
-# --- estimate CAViAR on monthly data --- #
+lines(est.midas.0.05$date,un.quant,type='l',col="blue")
+
+
+
+#TODO: --- estimate CAViAR on monthly data --- #
 
 
 
