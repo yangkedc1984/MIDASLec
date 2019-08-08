@@ -10,7 +10,7 @@ midas.optimization.rq <- function(dataY,dateY,optionsmidas,weights,q.level,nInit
   tmp <- datageneration.midas(dataY,optionsmidas,dateY)
   
   y <- tmp$y
-  X <- tmp$x
+  X <- abs(tmp$x)
   date <- tmp$dateselected
   #______________________ Initial guess _____________________________%
   #______________________________________________________________%
