@@ -7,3 +7,12 @@ require("MIDASLec")
 
 # --- load data --- #
 data("example4")
+
+# --- options --- #
+optionsmidas <- list(aggrY = 22, aggrX = 265) # forecast horizon, no. of lags of daily returns
+
+# --- compute log returns --- #
+snp500[-1, 2] <- log(snp500[-1, 2]/snp500[-dim(snp500)[1], 2])
+midas.optimization.rq(snp500[,2],snp500[,1],optionsmidas,"betaconstr",q.level=0.25,nInitialCond=5,is.plot=TRUE)
+
+

@@ -1,16 +1,17 @@
-midas.optimization.rq <- function(rv,optionsmidas,weights,q.level,nInitialCond=5) {
+midas.optimization.rq <- function(dataY,dateY,optionsmidas,weights,q.level,nInitialCond=5,is.plot=FALSE) {
   # q.level - quantile level
   # nInitialCond - Number of initial conditions for the optimization set to 5
-  # main function for MIDAS optimization
+
+  
   N <- 1  # total # of regressors
   
   #______________________ Data construction _____________________________%
   #___________________________________________________________________%
-  tmp <- datageneration.midas(rv,optionsmidas)
+  tmp <- datageneration.midas(dataY,optionsmidas,dateY)
   
   y <- tmp$y
   X <- tmp$x
-  
+  date <- tmp$dateselected
   #______________________ Initial guess _____________________________%
   #______________________________________________________________%
   # Select best starting points: select numInVec random initial values, calculate the obj fn at these points,
@@ -64,6 +65,11 @@ midas.optimization.rq <- function(rv,optionsmidas,weights,q.level,nInitialCond=5
   coeff.MIDAS <- as.numeric(temp[[1]][1:dim(initialTargetVectors)[2]])
   rq.val.MIDAS <- min(val)
   cond.quant.MIDAS <- midas.objfn.rq(coeff.MIDAS,y,X,2,weights,q.level)
+  if (is.plot){
+    plot(date,y,type='l',main=paste0("Returns and estimated conditional quantile (", q.level, ")"), xlab='Months',ylab='Returns')
+    lines(date,cond.quant.MIDAS,type='l',col="red")
+  }
+  
   return(list(coeff.MIDAS=coeff.MIDAS, rq.val.MIDAS=rq.val.MIDAS,cond.quant.MIDAS=cond.quant.MIDAS))
 }
 
@@ -73,13 +79,13 @@ midas.objfn.rq <- function(theta,y,X,OUT,weights,q.level) {
   # MIDAS vol
   val <- theta[1]+theta[2]*midas.filter(theta[-c(1,2)],X,weights)
   # rq function:
-  hit.stat <- q.level-(Y<val)
-  rq.stat <- t(hit.stat)%*%(Y-val)
+  hit.stat <- q.level-(y<val)
+  rq.stat <- t(hit.stat)%*%(y-val)
   if ((rq.stat == Inf)  || (is.complex(rq.stat))) {
     rq.stat <- 1e+10000
   }
   if (OUT == 1){
-    return(rq.stat)
+    return(as.numeric(rq.stat))
   } else if (OUT == 2){
     return(val)
   }
