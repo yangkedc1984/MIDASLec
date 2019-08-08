@@ -1,6 +1,9 @@
-# Chapter 4. quantile MIDAS
+# Chapter 4. MIDAS quantile 
 
 # --- preliminaries --- #
+rm(list=ls())
 require("MIDASLec")
-# --- quantile MIDAS regressions --- #
+# --- MIDAS quantile regressions --- #
 
+# --- load data --- #
+data("example4")
