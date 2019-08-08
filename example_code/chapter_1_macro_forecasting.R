@@ -152,3 +152,53 @@ plot(coef(est.umidas),type='l',
      main='U-MIDAS lag polynomial')
 
 
+# --- Third example is with ADS data: --- #
+# --- intial and last date for in-sample estimation --- #
+est.start <- "1987-01-01" 
+est.end <- "2011-12-01"
+
+midas.obj.fixed.for <- midas.adl(data.y=rgdp[,2],data.ydate=rgdp[,1],
+                                 data.x=payems[,2],data.xdate=payems[,1], 
+                                 est.start=as.Date(est.start),est.end=as.Date(est.end),
+                                 horizon=66,x.lag=66,y.lag=1,polynomial="nbeta",method="fixed",disp.flag=TRUE,
+                                 num.evals=10000,num.coef=10)
+
+umidas.obj.fixed.for <- midas.adl(data.y=rgdp[,2],data.ydate=rgdp[,1],
+                                  data.x=payems[,2],data.xdate=payems[,1], 
+                                  est.start=as.Date(est.start),est.end=as.Date(est.end),
+                                  horizon=66,x.lag=66,y.lag=1,polynomial="umidas",method="fixed",disp.flag=TRUE)
+
+
+midas.obj.fixed.now <- midas.adl(data.y=rgdp[,2],data.ydate=rgdp[,1],
+                             data.x=payems[,2],data.xdate=payems[,1], 
+                             est.start=as.Date(est.start),est.end=as.Date(est.end),
+                             horizon=22,x.lag=66,y.lag=1,polynomial="nbeta",method="fixed",disp.flag=TRUE,
+                             num.evals=10000,num.coef=10)
+
+umidas.obj.fixed.now <- midas.adl(data.y=rgdp[,2],data.ydate=rgdp[,1],
+                             data.x=payems[,2],data.xdate=payems[,1], 
+                             est.start=as.Date(est.start),est.end=as.Date(est.end),
+                             horizon=22,x.lag=66,y.lag=1,polynomial="umidas",method="fixed",disp.flag=TRUE)
+# forecasts:
+midas.obj.fixed.for$pred.obj$rmse
+umidas.obj.fixed.for$pred.obj$rmse
+
+# nowcasts:
+midas.obj.fixed.now$pred.obj$rmse
+umidas.obj.fixed.now$pred.obj$rmse
+
+
+# --- plot lag polynomials --- #
+par(mfrow=c(1,2)) 
+plot(nbeta(midas.obj.fixed.for$est.obj$coefficients[c(1,2,3)],d=66),type='l',
+     xlab='Lag',ylab='Coefficient',
+     main='Normalized Beta lag polynomial')
+
+
+plot(coef(umidas.obj.fixed.for$est.obj),type='l',
+     xlab='Lag',ylab='Coefficient',
+     main='U-MIDAS lag polynomial')
+
+
+
+

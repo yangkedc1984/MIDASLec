@@ -2,7 +2,7 @@ midas.adl <- function(data.y, data.ydate, data.x, data.xdate, est.start,est.end,
   #   polynomial  functional form of weights. Its value could be
   #                 o "nbeta": Beta polynomial
   #                 o "nealmon": Exp Almon polynomial
-  #                 o "umidas":   Polynomial with step functions (Umidas)
+  #                 o "umidas":   Polynomial with step functions (U-MIDAS)
   #                 o "timeaverage": time-averaged high-frequency data 
   #    methods for forecasting, method: 
   #                 o "fixed": fixed scheme 
