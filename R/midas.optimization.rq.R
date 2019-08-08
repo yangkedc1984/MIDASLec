@@ -70,7 +70,7 @@ midas.optimization.rq <- function(dataY,dateY,optionsmidas,weights,q.level,nInit
     lines(date,cond.quant.MIDAS,type='l',col="red")
   }
   
-  return(list(coeff.MIDAS=coeff.MIDAS, rq.val.MIDAS=rq.val.MIDAS,cond.quant.MIDAS=cond.quant.MIDAS))
+  return(list(coeff.MIDAS=coeff.MIDAS, rq.val.MIDAS=rq.val.MIDAS,cond.quant.MIDAS=cond.quant.MIDAS,y=y))
 }
 
 
