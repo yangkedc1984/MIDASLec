@@ -7,11 +7,9 @@ datageneration.midas
 Determine data frequency.
 }
 \usage{
-datageneration.midas(DateVec)
+datageneration.midas()
 }
-\arguments{
-  \item{DateVec}{vector of dates.}
-}
+
 \details{}
 \value{}
 \references{}

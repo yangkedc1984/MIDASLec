@@ -7,11 +7,9 @@ midas.optimization
 Determine data frequency.
 }
 \usage{
-midas.optimization(DateVec)
+midas.optimization()
 }
-\arguments{
-  \item{DateVec}{vector of dates.}
-}
+
 \details{}
 \value{}
 \references{}

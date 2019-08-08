@@ -17,7 +17,6 @@ Horizons = c(5, 10) # forecasting horizons
 # --- main loop through assets --- #
 QLIKE <- RMSFE <- array(NA,c(2,2,5))
 for (countf in 1:5) {
-  countf=1
   Rd <- AllclosingRet.2018[[countf]][[1]]
   dates <- Alldates.2018[[countf]]
   RV <- AllRV.2018[[countf]][[1]]
@@ -27,10 +26,9 @@ for (countf in 1:5) {
   counth <- 1
   #    loop across horizons
   for (hh in 1:length(Horizons)){
-    hh=1
     hhh <- Horizons[hh]
     
-    cat(paste0(countf), paste0(hhh), '\n')
+    cat("Asset: " , paste0(unlist(Names[[countf]])), "; Horizon: ",  paste0(hhh), '\n')
     optionsmidas$aggrY <- hhh
     
     tmp  <- datageneration.midas(RV,optionsmidas,dates,Rd)
@@ -52,15 +50,16 @@ for (countf in 1:5) {
     forecasts = cbind(s2.MIDAS.beta,s2.MIDAS.exp)
     
     # evaluate forecasts performance
-    qlike <- errors2 <- matrix(NA, nrow=dim(Forecasts)[1],ncol=dim(Forecasts)[2])
+    qlike <- errors2 <- matrix(NA, nrow=dim(forecasts)[1],ncol=dim(forecasts)[2])
     
     for (fff in 1:2){
         errors2[,fff] <- (RVh - forecasts[,fff])^2
-        qlike[,fff] <- log(forecasts[,fff])+RVh/Forecasts[,fff]
+        qlike[,fff] <- log(forecasts[,fff])+RVh/forecasts[,fff]
         RMSFE[counth,fff,countf] <- sqrt(mean(errors2[,fff]))
         QLIKE[counth,fff,countf] <- mean(qlike[,fff])
     }
     
+    counth <- counth + 1
   } # end of loop through horizons
   
   
