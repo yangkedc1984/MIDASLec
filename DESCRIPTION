@@ -1,7 +1,7 @@
 Package: MIDASLec
 Type: Package
-Title: Package for running examples of some models. 
-Version: 0.01
+Title: Package for running examples of some mixed data sampling (MIDAS) regression models. 
+Version: 0.1
 Date: 2019-07-18
 Author: JS
 Maintainer: Who to complain to: <jonas.striaukas@gmail.com>

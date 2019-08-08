@@ -1,6 +1,9 @@
 # Chapter 2. RV forecasting
 
 # --- preliminaries --- #
+rm(list=ls())
 require("MIDASLec")
-# --- MIDAS(p,q) regressions --- #
+# --- MIDAS RV regressions --- #
 
+# --- load data --- #
+data("example2")
