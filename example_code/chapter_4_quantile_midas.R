@@ -21,7 +21,14 @@ est.midas.0.25 <- midas.optimization.rq(snp500[,2],snp500[,1],optionsmidas,"beta
 
 est.midas.0.05 <- midas.optimization.rq(snp500[,2],snp500[,1],optionsmidas,"betaconstr",q.level=0.05,nInitialCond=5,is.plot=TRUE)
 
-# --- 
+# --- comppute rolling window unconditional quantile --- #
+y <- est.midas.0.05$y
+win.size <- 40
+un.quant <- matrix(NA,nrow=length(y),ncol=1)
+for (j in win.size:length(y)){
+  un.quant[j] <- quantile(y[(j-win.size+1):j], probs = 0.05)
+}
+lines(est.midas.0.05$date,un.quant,type='l',col="red")
 # --- estimate CAViAR on monthly data --- #
 
 
