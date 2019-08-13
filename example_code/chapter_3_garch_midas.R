@@ -6,7 +6,7 @@ require("MIDASLec")
 # --- GARCH-MIDAS regressions --- #
 
 # --- load data --- #
-load("example3")
+load("example3.rda")
 
 # --- prepare NASDAQ data --- #
 #trim data so start at same date..
@@ -24,6 +24,19 @@ nlag <- 24
 est.fixed.rv <- midas.garch(y,period,nlag,params0.fixedrv,regressor=NULL,rollingWindow=rollingWindow,thetaM=thetaM)
 
 # --- plot variance and long-term component --- #
+nobs <- length(y)
+idx <-  seq(period*nlag+1,nobs,by=1)
+date <- nasdaq.trunc[,1]
+plot(date[idx],sqrt(252*est.fixed.rv$Variance[idx]), type = 'l', col='green',
+    xlab='',ylab='')
+lines(date[idx],sqrt(252*est.fixed.rv$LongRun[idx]), type = 'l',col='blue')
+leg.txt <- c('Total Volatility','Secular Volatility')
+legend(1000,1.2,leg.txt,lty=c(1,1),lwd=c(2.5,2.5),col=c('green','blue'))
+
+
+
+
+
 
 # --- Second example with RV as a regressor rolling window --- #
 rollingWindow <- TRUE
@@ -33,6 +46,14 @@ nlag <- 24
 est.roll.rv <- midas.garch(y,period,nlag,params0.rollrv,regressor=NULL,rollingWindow=rollingWindow,thetaM=thetaM)
 
 # --- plot variance and long-term component --- #
+nobs <- length(y)
+idx <-  seq(period*nlag+1,nobs,by=1)
+date <- nasdaq.trunc[,1]
+plot(date[idx],sqrt(252*est.roll.rv$Variance[idx]), type = 'l', col='green',
+     xlab='',ylab='')
+lines(date[idx],sqrt(252*est.roll.rv$LongRun[idx]), type = 'l',col='blue')
+leg.txt <- c('Total Volatility','Secular Volatility')
+legend(1000,1,leg.txt,lty=c(1,1),lwd=c(2.5,2.5),col=c('green','blue'))
 
 # --- Third example with Industrial production as a regressor and fixed window --- #
 
@@ -70,6 +91,15 @@ nlag <- 24
 est.indpro <- midas.garch(y,period,nlag,params0.indpro,regressor=regressor,rollingWindow=FALSE,thetaM=TRUE)
 
 # --- plot variance and long-term component --- #
+nobs <- length(y)
+idx <-  seq(period*nlag+1,nobs,by=1)
+date <- nasdaq.trunc[,1]
+plot(date[idx],sqrt(252*est.indpro$Variance[idx]), type = 'l', col='green',
+     xlab='',ylab='')
+lines(date[idx],sqrt(252*est.indpro$LongRun[idx]), type = 'l',col='blue')
+leg.txt <- c('Total Volatility','Secular Volatility')
+legend(1000,0.8,leg.txt,lty=c(1,1),lwd=c(2.5,2.5),col=c('green','blue'))
+
 
 # --- Forth example with Consumer Sentiment as an exogenous regressor and fixed window --- #
 
@@ -111,6 +141,14 @@ nlag <- 12
 est.umscent <- midas.garch(y,period,nlag,params0.umscent,regressor=regressor,rollingWindow=rollingWindow,thetaM=thetaM)
 
 # --- plot variance and long-term component --- #
+nobs <- length(y)
+idx <-  seq(period*nlag+1,nobs,by=1)
+date <- nasdaq.trunc[,1]
+plot(date[idx],sqrt(252*est.umscent$Variance[idx]), type = 'l', col='green',
+     xlab='',ylab='')
+lines(date[idx],sqrt(252*est.umscent$LongRun[idx]), type = 'l',col='blue')
+leg.txt <- c('Total Volatility','Secular Volatility')
+legend(1000,0.8,leg.txt,lty=c(1,1),lwd=c(2.5,2.5),col=c('green','blue'))
 
 
 # --- Last example with mfGARCH package --- #
