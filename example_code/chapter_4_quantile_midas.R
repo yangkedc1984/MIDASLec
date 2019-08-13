@@ -13,7 +13,7 @@ optionsmidas <- list(aggrY = 22, aggrX = 22) # forecast horizon, no. of lags of 
 
 # --- compute log returns --- #
 snp500[-1, 2] <- log(snp500[-1, 2]/snp500[-dim(snp500)[1], 2])
-
+snp500 <- snp500[-1,]
 
 # --- estimate MIDAS quantile regression with beta (restricted) and plot quantiles --- #
 
