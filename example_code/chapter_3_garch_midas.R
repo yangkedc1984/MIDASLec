@@ -34,6 +34,11 @@ leg.txt <- c('Total Volatility','Secular Volatility')
 legend(1000,1.2,leg.txt,lty=c(1,1),lwd=c(2.5,2.5),col=c('green','blue'))
 
 
+# --- plot weight function --- #
+param1 <- est.fixed.rv$estParams[5]
+weights <- beta.weights(nlag,1,param1)
+plot(weights, type = 'l', col='blue',
+     xlab='',ylab='', main = 'Weight function. Fixed window - RV')
 
 
 
@@ -54,6 +59,12 @@ plot(date[idx],sqrt(252*est.roll.rv$Variance[idx]), type = 'l', col='green',
 lines(date[idx],sqrt(252*est.roll.rv$LongRun[idx]), type = 'l',col='blue')
 leg.txt <- c('Total Volatility','Secular Volatility')
 legend(1000,1,leg.txt,lty=c(1,1),lwd=c(2.5,2.5),col=c('green','blue'))
+
+# --- plot weight function --- #
+param1 <- est.roll.rv$estParams[5]
+weights <- beta.weights(nlag,1,param1)
+plot(weights, type = 'l', col='blue',
+     xlab='',ylab='', main = 'Weight function. Rolling window - RV')
 
 # --- Third example with Industrial production as a regressor and fixed window --- #
 
@@ -100,6 +111,11 @@ lines(date[idx],sqrt(252*est.indpro$LongRun[idx]), type = 'l',col='blue')
 leg.txt <- c('Total Volatility','Secular Volatility')
 legend(1000,0.8,leg.txt,lty=c(1,1),lwd=c(2.5,2.5),col=c('green','blue'))
 
+# --- plot weight function --- #
+param1 <- est.indpro$estParams[5]
+weights <- beta.weights(nlag,1,param1)
+plot(weights, type = 'l', col='blue',
+     xlab='',ylab='', main = 'Weight function. Fixed window - Industrial Production')
 
 # --- Forth example with Consumer Sentiment as an exogenous regressor and fixed window --- #
 
@@ -149,6 +165,13 @@ plot(date[idx],sqrt(252*est.umscent$Variance[idx]), type = 'l', col='green',
 lines(date[idx],sqrt(252*est.umscent$LongRun[idx]), type = 'l',col='blue')
 leg.txt <- c('Total Volatility','Secular Volatility')
 legend(1000,0.8,leg.txt,lty=c(1,1),lwd=c(2.5,2.5),col=c('green','blue'))
+
+
+# --- plot weight function --- #
+param1 <- est.umscent$estParams[5]
+weights <- beta.weights(nlag,1,param1)
+plot(weights, type = 'l', col='blue',
+     xlab='',ylab='', main = 'Weight function. Fixed window - Consumer Sentiment')
 
 
 # --- Last example with mfGARCH package --- #
