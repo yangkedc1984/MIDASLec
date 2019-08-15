@@ -66,7 +66,7 @@ midas.optimization.rq <- function(dataY,dateY,optionsmidas,weights,q.level,nInit
   rq.val.MIDAS <- min(val) 
   cond.quant.MIDAS <- midas.objfn.rq(coeff.MIDAS,y,X,2,weights,q.level)
   if (is.plot){
-    plot(date,y,type='l',main=paste0("Conditional quantile(s) for quantile level: (", q.level, ")"), xlab='Months',ylab='')
+    plot(date,y,type='l',main=paste0("MIDAS quantile. Quantile level: (", q.level, ")"), xlab='Months',ylab='')
     lines(date,cond.quant.MIDAS,type='l',col="red")
   }
   

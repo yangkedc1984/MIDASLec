@@ -7,16 +7,16 @@ require("MIDASLec")
 
 # --- load data --- #
 data("example4")
+set.seed(123)
 
 # --- options --- #
-optionsmidas <- list(aggrY = 22, aggrX = 22) # forecast horizon, no. of lags of daily returns
+optionsmidas <- list(aggrY = 5, aggrX = 22) # forecast horizon, no. of lags of daily returns
 
 # --- compute log returns --- #
 snp500[-1, 2] <- log(snp500[-1, 2]/snp500[-dim(snp500)[1], 2])
 snp500 <- snp500[-1,]
 
 # --- estimate MIDAS quantile regression with beta (restricted) and plot quantiles --- #
-
 est.midas.0.25 <- midas.optimization.rq(snp500[,2],snp500[,1],optionsmidas,"betaconstr",q.level=0.25,nInitialCond=10,is.plot=TRUE)
 
 est.midas.0.05 <- midas.optimization.rq(snp500[,2],snp500[,1],optionsmidas,"betaconstr",q.level=0.05,nInitialCond=10,is.plot=TRUE)
@@ -35,6 +35,6 @@ lines(est.midas.0.05$date,un.quant,type='l',col="blue")
 empiricalQuantile <- un.quant[41] #take unconditional quantile to initialize VaR loop.
 date <- est.midas.0.05$date
 
-caviar.optimization(y,date,q.level=0.05,empiricalQuantile,nInitialCond=10,nInitVec=1000,is.plot=TRUE)
+est.caviar.0.05 <- caviar.optimization(y,date,q.level=0.05,empiricalQuantile,nInitialCond=10,nInitVec=1000,is.plot=TRUE)
 
 

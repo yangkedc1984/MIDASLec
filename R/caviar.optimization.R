@@ -24,7 +24,7 @@ caviar.optimization <- function(r,date,q.level,empiricalQuantile,nInitialCond=10
   tmp <- caviar.obj(coeff.CAViaR,r,empiricalQuantile,q.level,2)
   cond.quant.CAViaR <- tmp$VaR
   if (is.plot){
-    plot(date,r,type='l',main=paste0("Conditional quantile(s) for quantile level: (", q.level, ")"), xlab='Months',ylab='')
+    plot(date,r,type='l',main=paste0("CAViaR. Quantile level: (", q.level, ")"), xlab='Months',ylab='')
     lines(date,cond.quant.CAViaR,type='l',col="red")
   }
  return(list(coeff.CAViaR=coeff.CAViaR,rq.val.CAViaR=rq.val.CAViaR,cond.quant.CAViaR=cond.quant.CAViaR))
