@@ -1,4 +1,4 @@
-midas.optimization.rq <- function(dataY,dateY,optionsmidas,weights,q.level,nInitialCond=5,is.plot=FALSE) {
+midas.optimization.rq <- function(dataY,dateY,optionsmidas,weights,q.level,nInitialCond=5) {
   # q.level - quantile level
   # nInitialCond - Number of initial conditions for the optimization set to 5
 
@@ -65,10 +65,6 @@ midas.optimization.rq <- function(dataY,dateY,optionsmidas,weights,q.level,nInit
   coeff.MIDAS <- as.numeric(temp[[1]][1:dim(initialTargetVectors)[2]])
   rq.val.MIDAS <- min(val) 
   cond.quant.MIDAS <- midas.objfn.rq(coeff.MIDAS,y,X,2,weights,q.level)
-  if (is.plot){
-    plot(date,y,type='l',main=paste0("MIDAS quantile. Quantile level: (", q.level, ")"), xlab='Months',ylab='')
-    lines(date,cond.quant.MIDAS,type='l',col="red")
-  }
   
   return(list(coeff.MIDAS=coeff.MIDAS,rq.val.MIDAS=rq.val.MIDAS,cond.quant.MIDAS=cond.quant.MIDAS,y=y,date=date))
 }

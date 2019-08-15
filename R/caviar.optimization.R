@@ -1,4 +1,4 @@
-caviar.optimization <- function(r,date,q.level,empiricalQuantile,nInitialCond=10,nInitVec=1000,is.plot=FALSE){
+caviar.optimization <- function(r,q.level,empiricalQuantile,nInitialCond=10,nInitVec=1000){
   
 
   RQfval <- matrix(NA,nrow=nInitVec,ncol=1) 
@@ -23,10 +23,6 @@ caviar.optimization <- function(r,date,q.level,empiricalQuantile,nInitialCond=10
   rq.val.CAViaR <- as.numeric(temp[[1]][4])
   tmp <- caviar.obj(coeff.CAViaR,r,empiricalQuantile,q.level,2)
   cond.quant.CAViaR <- tmp$VaR
-  if (is.plot){
-    plot(date,r,type='l',main=paste0("CAViaR. Quantile level: (", q.level, ")"), xlab='Months',ylab='')
-    lines(date,cond.quant.CAViaR,type='l',col="red")
-  }
  return(list(coeff.CAViaR=coeff.CAViaR,rq.val.CAViaR=rq.val.CAViaR,cond.quant.CAViaR=cond.quant.CAViaR))
  }
 
