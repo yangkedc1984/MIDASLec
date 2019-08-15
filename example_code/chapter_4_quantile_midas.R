@@ -17,12 +17,13 @@ snp500 <- snp500[-1,]
 
 # --- estimate MIDAS quantile regression with beta (restricted) and plot quantiles --- #
 
-est.midas.0.25 <- midas.optimization.rq(snp500[,2],snp500[,1],optionsmidas,"betaconstr",q.level=0.25,nInitialCond=5,is.plot=TRUE)
+est.midas.0.25 <- midas.optimization.rq(snp500[,2],snp500[,1],optionsmidas,"betaconstr",q.level=0.25,nInitialCond=10,is.plot=TRUE)
 
-est.midas.0.05 <- midas.optimization.rq(snp500[,2],snp500[,1],optionsmidas,"betaconstr",q.level=0.05,nInitialCond=5,is.plot=TRUE)
+est.midas.0.05 <- midas.optimization.rq(snp500[,2],snp500[,1],optionsmidas,"betaconstr",q.level=0.05,nInitialCond=10,is.plot=TRUE)
 
 # --- comppute rolling window unconditional quantile --- #
 y <- est.midas.0.05$y
+
 win.size <- 40
 un.quant <- matrix(NA,nrow=length(y),ncol=1)
 for (j in win.size:length(y)){
@@ -30,9 +31,10 @@ for (j in win.size:length(y)){
 }
 lines(est.midas.0.05$date,un.quant,type='l',col="blue")
 
+# --- estimate CAViAR on monthly data --- #
+empiricalQuantile <- un.quant[41] #take unconditional quantile to initialize VaR loop.
+date <- est.midas.0.05$date
 
-
-#TODO: --- estimate CAViAR on monthly data --- #
-
+caviar.optimization(y,date,q.level=0.05,empiricalQuantile,nInitialCond=10,nInitVec=1000,is.plot=TRUE)
 
 

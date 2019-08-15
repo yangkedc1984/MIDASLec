@@ -63,14 +63,14 @@ midas.optimization.rq <- function(dataY,dateY,optionsmidas,weights,q.level,nInit
   for(j in 1:length(est)){val[j] <- est[[j]]$value }
   temp <- est[min(val)==val]
   coeff.MIDAS <- as.numeric(temp[[1]][1:dim(initialTargetVectors)[2]])
-  rq.val.MIDAS <- min(val)
+  rq.val.MIDAS <- min(val) 
   cond.quant.MIDAS <- midas.objfn.rq(coeff.MIDAS,y,X,2,weights,q.level)
   if (is.plot){
-    plot(date,y,type='l',main=paste0("Returns and estimated conditional quantile (", q.level, ")"), xlab='Months',ylab='Returns')
+    plot(date,y,type='l',main=paste0("Conditional quantile(s) for quantile level: (", q.level, ")"), xlab='Months',ylab='')
     lines(date,cond.quant.MIDAS,type='l',col="red")
   }
   
-  return(list(coeff.MIDAS=coeff.MIDAS, rq.val.MIDAS=rq.val.MIDAS,cond.quant.MIDAS=cond.quant.MIDAS,y=y,date=date))
+  return(list(coeff.MIDAS=coeff.MIDAS,rq.val.MIDAS=rq.val.MIDAS,cond.quant.MIDAS=cond.quant.MIDAS,y=y,date=date))
 }
 
 
