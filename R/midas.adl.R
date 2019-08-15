@@ -46,16 +46,16 @@ midas.adl <- function(data.y, data.ydate, data.x, data.xdate, est.start,est.end,
     pred <- matrix(0,nrow=nroll,ncol=1)
     for (t in 1:nroll){
       if (method=="rolling"){
-        est.y.roll <- y.big[t:nobs-1+t]
-        est.x.roll <- x.big[t:nobs-1+t,]
-        est.lag.y.roll <- lag.y.big[t:nobs-1+t,]
-        est.date.roll <- x.date.big[t:nobs-1+t,]             
+        est.y.roll <- y.big[t:(nobs-1+t)]
+        est.x.roll <- x.big[t:(nobs-1+t),]
+        est.lag.y.roll <- lag.y.big[t:(nobs-1+t),]
+        est.date.roll <- x.date.big[t:(nobs-1+t),]             
       } else { 
         if (method=="expand"){
-          est.y.roll <- y.big[1:nobs-1+t]
-        est.x.roll <- x.big[1:nobs-1+t,]
-        est.lag.y.roll <- lag.y.big[1:nobs-1+t,]
-        est.x.date.roll <- x.date.big[1:nobs-1+t,]    
+        est.y.roll <- y.big[1:(nobs-1+t)]
+        est.x.roll <- x.big[1:(nobs-1+t),]
+        est.lag.y.roll <- lag.y.big[1:(nobs-1+t),]
+        est.x.date.roll <- x.date.big[1:(nobs-1+t),]    
         } else {
           stop('method should be set to either: fixed, rolling, expand. Check!')
         }

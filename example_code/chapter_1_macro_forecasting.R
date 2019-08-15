@@ -108,7 +108,7 @@ midas.obj.expand <- midas.adl(data.y=rgdp[,2],data.ydate=rgdp[,1],
 ta.obj.expand <- midas.adl(data.y=rgdp[,2],data.ydate=rgdp[,1],
                            data.x=payems[,2],data.xdate=payems[,1], 
                            est.start=as.Date(est.start),est.end=as.Date(est.end),
-                           horizon=3,x.lag=9,y.lag=1,polynomial="timeaverage",method="rolling",disp.flag=TRUE)
+                           horizon=3,x.lag=9,y.lag=1,polynomial="timeaverage",method="expand",disp.flag=TRUE)
 
 # --- Second example is with CFNAI data: --- #
 # --- intial and last date for in-sample estimation --- #
