@@ -39,7 +39,7 @@ lines(est.midas.0.05$date,un.quant,type='l',col="blue")
 empiricalQuantile <- un.quant[101] #take unconditional quantile to initialize VaR loop.
 date <- est.midas.0.05$date
 
-est.caviar.0.05 <- caviar.optimization(y,date,q.level=0.05,empiricalQuantile,nInitialCond=10,nInitVec=1000)
+est.caviar.0.05 <- caviar.optimization(y,q.level=0.05,empiricalQuantile,nInitialCond=10,nInitVec=1000)
 plot(date,y,type='l',main=paste0("CAViaR. Quantile level: 0.05"), xlab='Weeks',ylab='')
 lines(date,est.caviar.0.05$cond.quant.CAViaR,type='l',col="red")
 
@@ -51,15 +51,15 @@ lines(date,est.caviar.0.05$cond.quant.CAViaR,type='l',col="red")
 cond.skewness <- function(cond.up,cond.down,cond.med,q.level){
   num <- cond.up + cond.down - 2 * cond.med
   den <- cond.up - cond.down
-  # Kornish-fisher constant:
+  # Kornish-Fisher constant:
   const <- 6/qnorm(q.level)
   c.skew <- num/den*const
   return(c.skew)
 }
 
 # --- additionally compute CAViaR for 0.5 and 0.95 levels --- #
-est.caviar.0.5 <- caviar.optimization(y,date,q.level=0.5,quantile(y[1:100],0.5),nInitialCond=10,nInitVec=1000)
-est.caviar.0.95 <- caviar.optimization(y,date,q.level=0.95,quantile(y[1:100],0.95),nInitialCond=10,nInitVec=1000)
+est.caviar.0.5 <- caviar.optimization(y,q.level=0.5,quantile(y[1:100],0.5),nInitialCond=10,nInitVec=1000)
+est.caviar.0.95 <- caviar.optimization(y,q.level=0.95,quantile(y[1:100],0.95),nInitialCond=10,nInitVec=1000)
 
 # --- compute skewness --- #
 skewn.caviar <- cond.skewness(est.caviar.0.95$cond.quant.CAViaR,est.caviar.0.05$cond.quant.CAViaR,est.caviar.0.5$cond.quant.CAViaR,0.95)
