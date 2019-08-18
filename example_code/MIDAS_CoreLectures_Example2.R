@@ -10,17 +10,17 @@ data("example2")
 
 # --- options --- #
 optionsmidas <- list(aggrX =  126) # no. of lags of RV
-#Horizons = c(5, 10, 22, 44, 66) # forecasting horizons
 Horizons = c(5, 10) # forecasting horizons
 
+# --- initialize arrays --- #
+QLIKE <- RMSFE <- array(NA,c(2,2,5))
 
 # --- main loop through assets --- #
-QLIKE <- RMSFE <- array(NA,c(2,2,5))
 for (countf in 1:5) {
   Rd <- AllclosingRet.2018[[countf]][[1]]
   dates <- Alldates.2018[[countf]]
   RV <- AllRV.2018[[countf]][[1]]
-  t <- length(dates) # no of time-series obs
+  t <- length(dates) # number of time-series obs
   
   
   counth <- 1
@@ -40,9 +40,8 @@ for (countf in 1:5) {
     # [theta_MIDAS_beta, ~,s2_MIDAS_beta]
     theta.MIDAS.beta <- beta.est$coeff.MIDAS
     s2.MIDAS.beta <- beta.est$cond.val.MIDAS
-    #     MIDAS on RV with exp weights
+    # MIDAS on RV with exp weights
     exp.est <-  midas.optimization(RV,optionsmidas,"exp")
-    # [theta_MIDAS_beta, ~,s2_MIDAS_beta]
     theta.MIDAS.exp <- exp.est$coeff.MIDAS
     s2.MIDAS.exp <- exp.est$cond.val.MIDAS
    
