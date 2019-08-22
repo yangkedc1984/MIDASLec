@@ -25,7 +25,7 @@ est.midas.0.05 <- midas.optimization.rq(snp500[,2],snp500[,1],optionsmidas,"beta
 plot(est.midas.0.05$date,est.midas.0.05$y,type='l',main=paste0("MIDAS quantile. Quantile level: 0.05"), xlab='Weeks',ylab='')
 lines(est.midas.0.05$date,est.midas.0.05$cond.quant.MIDAS,type='l',col="red")
 
-# --- comppute rolling window unconditional quantile --- #
+# --- compute rolling window unconditional quantile --- #
 y <- est.midas.0.05$y
 
 win.size <- 100
@@ -35,7 +35,7 @@ for (j in win.size:length(y)){
 }
 lines(est.midas.0.05$date,un.quant,type='l',col="blue")
 
-# --- estimate CAViAR on monthly data --- #
+# --- estimate CAViAR on weekly data --- #
 empiricalQuantile <- un.quant[101] #take unconditional quantile to initialize VaR loop.
 date <- est.midas.0.05$date
 
@@ -64,7 +64,7 @@ est.caviar.0.95 <- caviar.optimization(y,q.level=0.95,quantile(y[1:100],0.95),nI
 # --- compute skewness --- #
 skewn.caviar <- cond.skewness(est.caviar.0.95$cond.quant.CAViaR,est.caviar.0.05$cond.quant.CAViaR,est.caviar.0.5$cond.quant.CAViaR,0.95)
 
-# --- additionally compute CAViaR for 0.5 and 0.95 levels --- #
+# --- additionally compute MIDAS for 0.5 and 0.95 levels --- #
 est.midas.0.5  <- midas.optimization.rq(snp500[,2],snp500[,1],optionsmidas,"betaconstr",q.level=0.5,nInitialCond=10)
 est.midas.0.95 <- midas.optimization.rq(snp500[,2],snp500[,1],optionsmidas,"betaconstr",q.level=0.95,nInitialCond=10)
 
