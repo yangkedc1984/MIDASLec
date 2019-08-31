@@ -1,6 +1,5 @@
 MIDAS Lab Sessions: SETUP
 ========================================================
-autosize: true
 
     
 Setup required package for running examples
