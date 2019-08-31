@@ -6,9 +6,9 @@ ARDL-MIDAS regression
 ========================================================
 
 
-![](https://latex.codecogs.com/gif.latex?%5Ctext%7BARDL-MIDAS%7D%20%28%24p_y%5EQ%2Cq_X%5EM%24%29%20%5Ctext%7Bmodel%7D)
+![](https://<i></i>latex.codecogs.com/gif.latex?%5Ctext%7BARDL-MIDAS%7D%20%28%24p_y%5EQ%2Cq_X%5EM%24%29%20%5Ctext%7Bmodel%7D)
 
-![](https&#58;//latex.codecogs.com/gif.latex?Y_%7Bt&plus;h%7D%5E%7BQ%2Ch%7D%20%3D%20%5Cmu_h%20&plus;%20%5Csum_%7Bj%3D0%7D%5E%7Bp_y%5EQ-1%7D%5Crho_%7Bj&plus;1%7D%5Eh%20Y_%7Bt-j%7D%5EQ%20&plus;%20%5Cbeta%5Eh%20%5Csum_%7Bj%3D0%7D%5E%7Bq_X%5EM-1%7D%20%5Csum_%7Bi%3D0%7D%5E%7Bm-1%7D%20%5Comega_%7Bi&plus;j*m%7D%28%5Ctheta_h%29%20X_%7Bm-i%2Ct-j%7D%5EM%20&plus;%20%5Cepsilon_%7Bt&plus;h%7D%5Eh)
+![](https//latex.codecogs.com/gif.latex?Y_%7Bt&plus;h%7D%5E%7BQ%2Ch%7D%20%3D%20%5Cmu_h%20&plus;%20%5Csum_%7Bj%3D0%7D%5E%7Bp_y%5EQ-1%7D%5Crho_%7Bj&plus;1%7D%5Eh%20Y_%7Bt-j%7D%5EQ%20&plus;%20%5Cbeta%5Eh%20%5Csum_%7Bj%3D0%7D%5E%7Bq_X%5EM-1%7D%20%5Csum_%7Bi%3D0%7D%5E%7Bm-1%7D%20%5Comega_%7Bi&plus;j*m%7D%28%5Ctheta_h%29%20X_%7Bm-i%2Ct-j%7D%5EM%20&plus;%20%5Cepsilon_%7Bt&plus;h%7D%5Eh)
 
 where
 
