@@ -6,7 +6,7 @@ ARDL-MIDAS regression
 ========================================================
 
 
-ARDL-MIDAS($p_y^Q,q_X^M$) model
+ARDL-MIDAS ![](https://latex.codecogs.com/gif.latex?%28%24p_y%5EQ%2Cq_X%5EM%24%29)  model
 
 \begin{equation}
     Y_{t+h}^{Q,h} = \mu_h + \sum_{j=0}^{p_y^Q-1}\rho_{j+1}^h Y_{t-j}^Q + \beta^h \sum_{j=0}^{q_X^M-1} \sum_{i=0}^{m-1} \omega_{i+j*m}(\theta_h) X_{m-i,t-j}^M + \epsilon_{t+h}^h
