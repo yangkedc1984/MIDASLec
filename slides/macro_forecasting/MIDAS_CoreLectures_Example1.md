@@ -5,7 +5,7 @@ Macro forecasting: ARDL-MIDAS regressions
 ARDL-MIDAS regression
 ========================================================
 
-ARDL-MIDAS($p_y^Q,q_X^M$) model
+ARDL-MIDAS(p_y^Q,q_X^M) model
 
 $$
 \begin{equation}
