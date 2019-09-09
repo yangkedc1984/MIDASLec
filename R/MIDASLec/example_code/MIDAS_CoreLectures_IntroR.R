@@ -3,7 +3,7 @@
 require(devtools)
 
 #--- install required package ---#
-install_github("jstriaukas/MIDASLec")
+install_github("jstriaukas/MIDASLec/R/MIDASLec/")
 
 #--- check if it loads up ---#
 require(MIDASLec)
