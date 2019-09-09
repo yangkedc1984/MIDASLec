@@ -1,0 +1,12 @@
+MainConditionalQuantile - main function, calls the optimization/test routines
+EstimateConditionalQuantile - produces coefficient estimates/quantile outputs/hit statistics
+CondQuantileOptim - optimization procedure, minimizes the regression quantile
+RegressionQuantileObj - calls the VaR function to calculate the regression quantile criterion
+EvaluateVaR - VaR / conditional quantile for different functional specifications
+
+ComputeVarCov - variance-covariance matrix
+CreateWeightingVector - MIDAS weighting polynomial
+DQStat - Dynamic quantile test (CAViaR paper)
+VaRLR - Kupiec & Christoffersen test 
+
+Data files: daily and weekly returns
