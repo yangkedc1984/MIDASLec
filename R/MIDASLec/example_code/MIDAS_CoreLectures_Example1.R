@@ -154,7 +154,7 @@ plot(weight(cfnai.est.midas$coefficients[c(2,3)],d=12),type='l',
      xlab='Lag',ylab='Coefficient',
      main='Normalized exponential Almon lag polynomial')
 
-plot(coef(cfnai.est.umidas),type='l',
+plot(coef(cfnai.est.umidas)[-c(1,2)],type='l',
      xlab='Lag',ylab='Coefficient',
      main='U-MIDAS lag polynomial')
 
