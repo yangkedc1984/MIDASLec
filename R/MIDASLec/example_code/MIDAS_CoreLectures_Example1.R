@@ -59,7 +59,9 @@ payems.ta.oos$rmse
 
 # --- plot lag polynomials --- #
 par(mfrow=c(1,2)) 
-plot(weight(payems.est.midas$coefficients[c(1,2,3)],d=9),type='l',
+plot(weight(payems.est.midas$coefficients[c(1,2,3)],d=9) / 
+       sum(weight(payems.est.midas$coefficients[c(1,2,3)],d=9))
+     ,type='l',
       xlab='Lag',ylab='Coefficient',
       main='Normalized exponential Almon')
 
