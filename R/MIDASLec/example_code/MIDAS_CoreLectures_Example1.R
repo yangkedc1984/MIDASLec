@@ -3,7 +3,7 @@
 # --- preliminaries --- #
 rm(list=ls())
 require("MIDASLec")
-# --- ADL-MIDAS(p,q) regressions --- #
+# --- ARDL-MIDAS(p,q) regressions --- #
 
 # --- load data --- #
 data("example1")
